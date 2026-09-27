@@ -1,0 +1,38 @@
+# Room-to-3D pipeline dependencies.
+# PyTorch is intentionally left out below -- install it separately with the
+# CUDA build matching your driver (see CLAUDE.md / pytorch.org). Everything
+# else here assumes torch is already present.
+
+# --- Core ---
+numpy
+scipy
+opencv-python
+pillow
+tqdm
+pyyaml
+
+# --- Camera pose / SfM ---
+pycolmap
+# GLOMAP has no pip package; build from source: third_party/glomap
+# VGGT (non-commercial license): third_party/vggt
+# MASt3R (CC BY-NC-SA): third_party/mast3r
+
+# --- Depth estimation ---
+# Depth Anything V2: third_party/depth-anything-v2
+# Depth Pro: third_party/depth-pro
+
+# --- Segmentation ---
+# OneFormer: third_party/oneformer
+# Mask2Former: install via detectron2 or mmsegmentation (no submodule added)
+# SAM2: third_party/sam2
+
+# --- 3D geometry / mesh ---
+open3d
+trimesh
+
+# --- Debugging / visualization ---
+rerun-sdk
+
+# --- Gaussian Splatting (later milestone, optional) ---
+# nerfstudio
+# gsplat

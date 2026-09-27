@@ -1,0 +1,14 @@
+# Pipeline configuration (placeholder -- fill in as stages are implemented).
+
+frame_extraction:
+  fps: 2.5
+  blur_threshold: 100.0
+
+pose_estimation:
+  method: colmap # colmap | vggt | mast3r
+
+depth_estimation:
+  method: depth_anything_v2 # depth_anything_v2 | depth_pro
+
+scale_correction:
+  disagreement_threshold: 0.10

@@ -1,0 +1,21 @@
+[submodule "third_party/glomap"]
+	path = third_party/glomap
+	url = https://github.com/colmap/glomap.git
+[submodule "third_party/vggt"]
+	path = third_party/vggt
+	url = https://github.com/facebookresearch/vggt.git
+[submodule "third_party/mast3r"]
+	path = third_party/mast3r
+	url = https://github.com/naver/mast3r.git
+[submodule "third_party/depth-anything-v2"]
+	path = third_party/depth-anything-v2
+	url = https://github.com/DepthAnything/Depth-Anything-V2.git
+[submodule "third_party/depth-pro"]
+	path = third_party/depth-pro
+	url = https://github.com/apple/ml-depth-pro.git
+[submodule "third_party/sam2"]
+	path = third_party/sam2
+	url = https://github.com/facebookresearch/sam2.git
+[submodule "third_party/oneformer"]
+	path = third_party/oneformer
+	url = https://github.com/SHI-Labs/OneFormer.git
