@@ -7,7 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from roommodel.frame_extraction.extract_frames import extract_frames
+from roommodel.monocular.extract_frames import extract_frames
 
 
 def main() -> None:

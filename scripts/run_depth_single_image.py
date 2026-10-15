@@ -13,7 +13,7 @@ from open3d import visualization as vis
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from roommodel.depth_estimation.depth_anything import estimate_depth
+from roommodel.monocular.depth_anything import estimate_depth
 
 def to3DSurfaceMap(depth, stride: int = 4, relief: float = 0.3):
     # Height-map mesh: pixel (x, y) as ground-plane position, depth as height.

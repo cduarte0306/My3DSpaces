@@ -3,9 +3,10 @@
 import sys
 from pathlib import Path
 
-import cv2
 import numpy as np
 import torch
+
+from roommodel.core.image_io import load_image_bgr
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _DEPTH_ANYTHING_V2_DIR = _REPO_ROOT / "third_party" / "depth-anything-v2"
@@ -57,19 +58,27 @@ def _load_model(encoder: str, checkpoint_path: str) -> DepthAnythingV2:
 
 
 def estimate_depth(
-    image_path: str,
+    image: str | Path | np.ndarray,
     encoder: str = "vits",
     checkpoint_path: str | None = None,
     input_size: int = 518,
 ) -> np.ndarray:
+    """Relative inverse depth (disparity) for one image, as float32 (H, W).
+
+    Accepts a path or an already-loaded BGR array. Values are affine-invariant
+    -- larger means closer, but there is no unit and no fixed zero, so they
+    only compare within a single image. Use
+    `depth_estimation.metric_alignment` to convert them to metres.
+
+    Paths are read with the EXIF orientation ignored, so the result lines up
+    with intrinsics recorded against the native sensor buffer.
+    """
     if checkpoint_path is None:
         checkpoint_path = str(_DEFAULT_CHECKPOINT_DIR / f"depth_anything_v2_{encoder}.pth")
 
     model = _load_model(encoder, checkpoint_path)
 
-    raw_image = cv2.imread(image_path)
-    if raw_image is None:
-        raise FileNotFoundError(f"Could not read image: {image_path}")
+    raw_image = image if isinstance(image, np.ndarray) else load_image_bgr(image)
 
     with torch.no_grad():
         depth = model.infer_image(raw_image, input_size)
