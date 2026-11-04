@@ -33,6 +33,7 @@ trimesh
 # --- Debugging / visualization ---
 rerun-sdk
 
+pyliblzfse
 # --- Gaussian Splatting (later milestone, optional) ---
 # nerfstudio
 # gsplat
